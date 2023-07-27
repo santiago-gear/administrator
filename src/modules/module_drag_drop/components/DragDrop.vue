@@ -1,18 +1,18 @@
 
 <script setup lang="ts">
 
-import { shallowRef,onMounted, defineAsyncComponent,ref, computed,type Ref, triggerRef} from 'vue';
+import { onMounted, defineAsyncComponent,ref, shallowReactive,computed, triggerRef} from 'vue';
 import { deleteSection, getDefault, getLastId, getSection, getSections } from '../services/getSections.service'
 import {type Section} from '@/shared/interfaces/section.interface'
-import {useEditSectionStore } from '@/shared/stores/editSection.ts' 
+import {useEditSectionStore } from '@/shared/stores/editSection' 
+
 
 const storeEdit = useEditSectionStore()
 
-/* const sections: Section[] = shallowReactive([]) */
-/* const sections: Ref<Section[]> = shallowRef([])  */
-const sections = computed(()=> storeEdit.sections)
+/* const sections = computed(()=> storeEdit.sections) */
+const sections = shallowReactive([])
 const sectionsDivs= ref()
-
+const sectionsRefresh = computed(()=>storeEdit.refreshSections)
 const positions = { old:null,new:null}
 
 let lastID = 0
@@ -49,9 +49,10 @@ function loadSections():void{
             type:savedSection.type,
             templateName:savedSection.templateName,
             elements:savedSection.elements,
-            component:defineAsyncComponent(() => import(`./${savedSection.templateName}.vue`))
+            component:defineAsyncComponent(() => import(`../../../shared/components/${savedSection.type}/${savedSection.templateName}.vue`))
         }
-        storeEdit.addSection(newSection)
+        /* storeEdit.addSection(newSection) */
+        sections.push(newSection)
     })
     
 }
@@ -72,21 +73,23 @@ function loadSections():void{
 
 function addSection(type:string,templateName:string):void{
     const defaultSection = getDefault(templateName)
-    const url = `./${templateName}.vue`
+    const url = `../../../shared/components/${type}/${templateName}.vue`
     const newSection:Section ={
         id:generateIDs(),
         type,
         templateName,
         elements:structuredClone(defaultSection.elements),
-        component: defineAsyncComponent(() => import(url))
+        component: defineAsyncComponent(() => import(/* @vite-ignore */url))
     } 
-    storeEdit.addSection(newSection) 
+    /* storeEdit.addSection(newSection)  */
+    sections.push(newSection)
 }
 
-function removeSection(index:number,id:number){
-    sections.splice(index, 1)
+/* function removeSection(index:number,id:number){
+
+    storeEdit.removeSection(index)
     deleteSection(id)
-}
+} */
 
 function dropSection(event:DragEvent){
     const option = event.dataTransfer?.getData('dragOption')
@@ -99,15 +102,14 @@ function dropSection(event:DragEvent){
         if(positions.old == positions.new) return
         const aux = sections[positions.old]
         if(positions.new == -1){
-            sections.value.splice(positions.old,1)
-            sections.value.push(aux)
+            sections.splice(positions.old,1)
+            sections.push(aux)
         }else{
-            sections.value.splice(positions.old,1)
-            sections.value.splice(positions.new,0,aux)
+            sections.splice(positions.old,1)
+            sections.splice(positions.new,0,aux)
         } 
-        
+        storeEdit.updateSections()
     } 
-    triggerRef(sections)   
 }
 
 function addClass(event:DragEvent,index:number){
@@ -115,6 +117,7 @@ function addClass(event:DragEvent,index:number){
     if(event.dataTransfer !=undefined){
         event.dataTransfer.setData('dragOption','move')
         sectionsDivs.value[index].classList.add('dragging')
+        positions.old=index
     }
 }
 
@@ -131,7 +134,6 @@ function draggingSection(event:DragEvent){
             return event.clientY <= sectionView.offsetTop + sectionView.offsetHeight / 2
         })
 
-        
         const nextSectionPos = otherSections.findIndex( section => {
             return event.clientY <= section.offsetTop + section.offsetHeight
         })
@@ -139,7 +141,7 @@ function draggingSection(event:DragEvent){
         document.querySelector('.drop-zone')!.insertBefore(draggedSectionView!,nextSectionView!)
         positions.new = nextSectionPos
     } catch(error){            
-    
+        
     }
 
 }
@@ -147,15 +149,18 @@ function draggingSection(event:DragEvent){
 function editSection(section:Section){
     storeEdit.section = section
     storeEdit.showEditMenu = true
-    //storeEdit.sections = sections
 }
+
+
 
 
 
 onMounted(()=>{
     lastID = getLastId()
-    loadSections()
+    //loadSections()
+
 })
+
 
 
 </script>
@@ -166,6 +171,7 @@ onMounted(()=>{
         @drop="dropSection" 
         @dragover="draggingSection" 
         @dragenter.prevent
+        :key="sectionsRefresh"
     >
         <div class="section" v-for="(section, index) in sections" draggable="true" 
             @dragstart="addClass($event,index)"
@@ -173,10 +179,9 @@ onMounted(()=>{
             @dblclick="editSection(section)"
             ref="sectionsDivs"
             >
-            <component :is="section.component" :elements="section.elements"></component>
-           
-            <button @click="removeSection(index,section.id)">Delete</button>
+            <component :is="section?.component" :elements="section?.elements"></component>
         </div>
+
     </div>
 </template>
 
@@ -187,13 +192,4 @@ onMounted(()=>{
     height: 100vh;
 }
 
-.section {
-    border: 1px solid black;
-    padding: 1rem .5rem;
-    transition: scale .3s;
-}
-
-.section:hover {
-    scale: 1.02;
-}
 </style>

@@ -6,23 +6,34 @@ import {type SubMenu} from '@/shared/interfaces/menu.interfaces'
 
 const menu: SubMenu[] = [
     {
-        type: 'Contact',
-        options: ['Contact Black', 'Contact White']
-    }, {
-        type: 'Header',
-        options: ['Big Header', 'Small Header']
-    }, {
-        type: 'NavBar',
-        options: ['Fix Navbar', 'Toogle Navbar']
+        type:'About',
+        options:['Dialo About']
     },
-    {
-        type: 'Footer',
-        options: ['Dark Footer', 'Light Footer']
-    },
-    {
+    /* {
         type: 'Carousel',
         options: ['Image Carousel']
-    }]
+    }, */
+    {
+        type: 'Header',
+        options: ['Big Header', 'Small Header', 'Dialo Header']
+    },
+    {
+        type: 'Metrics',
+        options: ['Dialo Metrics']
+    },
+    {
+        type: 'Navbar',
+        options: ['Dialo Navbar']
+    }, 
+    {
+        type: 'Footer',
+        options: ['Dialo Footer']
+    },
+    {
+        type: 'Services',
+        options: ['Dialo Services']
+    },
+]
 
 const submenu: Ref<string[]>= ref([])
 const typeSelected: Ref<string> = ref('')

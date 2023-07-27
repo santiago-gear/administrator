@@ -1,5 +1,5 @@
 {
-  "name": "admin-library",
+  "name": "administrador_paginas",
   "version": "0.0.0",
   "private": true,
   "scripts": {
@@ -11,7 +11,10 @@
     "type-check": "vue-tsc --noEmit -p tsconfig.vitest.json --composite false"
   },
   "dependencies": {
+    "animate.css": "^4.1.1",
     "pinia": "^2.1.4",
+    "primeicons": "^6.0.1",
+    "primevue": "^3.31.0",
     "vue": "^3.3.4"
   },
   "devDependencies": {

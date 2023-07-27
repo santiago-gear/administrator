@@ -1,6 +1,5 @@
+import {type DataBaseSection } from './../../../shared/interfaces/section.interface';
 
-
-import { type Section } from "@/shared/interfaces/section.interface"
 
 import DB from '@/Mocks/database.mock'
 
@@ -9,7 +8,7 @@ const getDB = ():Object =>{
     return DB
 }
 
-const getDefault = (name:string):Section => {
+const getDefault = (name:string):DataBaseSection => {
 
     let id =0;
     switch(name){
@@ -19,14 +18,8 @@ const getDefault = (name:string):Section => {
         case 'SmallHeader':
             id=1;
             break;
-        case 'FixNavbar':
-            id=2;
-            break;
-        case 'DarkFooter':
-            id=3;
-            break;
-        case 'TextCarousel':
-            id=4;
+        case 'DialoHeader':
+            id=7;
             break;
     }
     return DB[id]
@@ -39,8 +32,8 @@ const getDefault = (name:string):Section => {
 const getSections = ():number[] =>{
     return [5,6]
 }
-const getSection = (id:number):Section =>{
-    return DB[id as keyof typeof DB]
+const getSection = (id:number):DataBaseSection =>{
+    return DB[id]
 }
 
 const getLastId =() =>{

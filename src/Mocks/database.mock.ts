@@ -147,28 +147,58 @@ export default [
         }
     },
     {
-        type:'NavBar',
-        templateName:'FixNavbar',
+        id:6,
+        type:'Header',
+        templateName:'BigHeader',
         elements:{
-            item1:{
+            tittle: {
                 type:'text',
-                value:'Home',
-                styles:{
-                    color:'#5741da'
+                value:'Section 0',
+                styles: {
+                    color:'#c81e1e',
+                    fontSize:30
                 }
             },
-            item2:{
+            p: {
                 type:'text',
-                value:'Services',
+                value:'modified',
+                styles:{
+                    color:'#2cb3ce'
+                }
+            }
+        }
+    },
+    {
+        id:7,
+        type:'Header',
+        templateName:'DialoHeader',
+        elements:{
+            tittle: {
+                type:'text',
+                value:'DIALO B&M',
+                styles: {
+                    color:'#000000',
+                }
+            },
+            description: {
+                type:'text',
+                value:'Damos valor con soluciones simples, ágiles, flexibles y escalables, integrando calidad humana y tecnologia de avanzada',
                 styles:{
                     color:'#000000'
                 }
             },
-            item3:{
+            button:{
                 type:'text',
-                value:'Contact Us',
+                value:'Agenda una consulta',
                 styles:{
-                    color:'#000000'
+                    width:'256px',
+                    height: '16px',
+                    borderRadius:'34px',
+                    border: '1px solid black',
+                    backgroundColor: '#eeeeee',
+                    color: '#000000',
+                    fontWeight: 'light',
+                    marginTop: '16px'
                 }
             }
         }

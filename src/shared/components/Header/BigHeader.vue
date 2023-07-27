@@ -1,12 +1,14 @@
 <script setup>
 
 
-import {ref} from 'vue'
+import {ref,onMounted} from 'vue'
+import { proof } from './../../interfaces/section.interface';
+ 
 
 const props = defineProps({
     elements:{
         type:Object,
-        required:false,
+        required:true,
         default:{}
     }
 })
