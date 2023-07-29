@@ -1,7 +1,7 @@
 <script setup lang="ts">
 
 
-import { ref } from 'vue'
+import { onMounted, ref } from 'vue'
 
 import PanelMenu from 'primevue/panelmenu'
 
@@ -35,10 +35,10 @@ const items = [
         }
     },
     { 
-        label: 'Metrics',
+        label: 'Info',
         items:[
             {
-                label:'Dialo Metrics'
+                label:'Dialo Information'
             }
         ],
         command:()=>{
@@ -88,7 +88,7 @@ const dragElement = (event :DragEvent) =>{
         event.dataTransfer.effectAllowed= 'move'
         event.dataTransfer.setData('dragOption','insert')
         event.dataTransfer.setData('sectionType',typeSelected.value)
-        const name = event.originalTarget.textContent
+        const name = event.target.innerText
         event.dataTransfer.setData('sectionTemplateName', name.split(' ').join(''))
     }
 }

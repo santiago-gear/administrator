@@ -25,7 +25,6 @@ const getDefault = (name:string):DataBaseSection => {
             id=3;
             break;
     }
-    console.log(id)
     return DB[id]
 }
 
@@ -44,6 +43,11 @@ const getLastId =() =>{
     return 6
 }
 
+const saveImageDB = (id,image) =>{
+    console.log(id)
+    DB[id].elements.image.source = image
+}
+
 const deleteSection = (id:number):void => {
     delete DB[id as keyof typeof DB]
 }
@@ -55,5 +59,6 @@ export {
     getLastId,
     getSection, 
     getSections,
+    saveImageDB,
     /*saveSection, */
 }

@@ -48,7 +48,7 @@ export default [
             image:{
                 type:'image',
                 source:'https://www.zooplus.es/magazine/wp-content/uploads/2020/01/Escuela-para-cachorros-768x512.jpeg',
-                alt:'kimetsu no yaiba img'
+                alt:'perritos jugando'
             }
         }
     },

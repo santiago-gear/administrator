@@ -26,9 +26,8 @@ const elements = ref(props.elements)
             { color:'#'+elements.p.styles.color }
         ]"
     >
-        {{elements.p.value}}
+        {{ elements.p.value }}
     </p>
 
     <img :src="elements.image.source" :alt="elements.image.alt" >
-
 </template>

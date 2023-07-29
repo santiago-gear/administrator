@@ -24,6 +24,8 @@ const dictionary = {
 }
 
 
+
+
 </script>
 
 
@@ -58,6 +60,8 @@ const dictionary = {
 .menu{
     max-width: 40rem;
 }
+
+
 
 </style>
 

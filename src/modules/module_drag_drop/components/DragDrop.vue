@@ -1,18 +1,22 @@
 
 <script setup lang="ts">
 
-import { onMounted, defineAsyncComponent,ref, shallowReactive,} from 'vue';
+import { onMounted, defineAsyncComponent,ref, shallowReactive, computed, onUpdated,} from 'vue';
 import { deleteSection, getDefault, getLastId, getSection, getSections } from '../services/getSections.service'
 import {type Section} from '@/shared/interfaces/section.interface'
 import {useEditSectionStore } from '@/shared/stores/editSection' 
-import SpeedDial from 'primevue/speeddial';
 import Button from 'primevue/button'
+import { json } from 'stream/consumers';
 
 const storeEdit = useEditSectionStore()
 const sections = shallowReactive([])
 const sectionsDivs= ref()
 const sectionsRefresh =ref(0)
 const positions = { old:null,new:null}
+
+let  lastEditedSection= 0
+const currentEditedSection = ref(storeEdit.section.id)
+
 
 let lastID = 0
 
@@ -21,8 +25,27 @@ function generateIDs():number{
     return lastID
 }
 
-function loadSections():void{
-    const savedSectionsIDs = getSections()
+function loadLocalSections():void{
+    const localSections = localStorage.getItem('sections')
+    console.log(localSections)
+    const savedSections = JSON.parse(localSections)
+    console.log(savedSections)
+    savedSections.map( savedSection => {
+        const newSection = {
+            id:savedSection.id,
+            type:savedSection.type,
+            templateName:savedSection.templateName,
+            elements:savedSection.elements,
+            component:defineAsyncComponent(() => import(`../../../shared/components/${savedSection.type}/${savedSection.templateName}.vue`))
+        }
+        sections.push(newSection)
+    })    
+     
+}
+
+/* function loadSections():void{
+    const localSections = localStorage.getItem('sections')
+    const savedSectionsIDs = JSON.parse(localSections)
     savedSectionsIDs.map( id =>{
         const savedSection = getSection(id)        
         const newSection = {
@@ -34,6 +57,10 @@ function loadSections():void{
         }
         sections.push(newSection)
     })   
+} */
+
+function saveSections():void{
+    localStorage.setItem('sections',JSON.stringify(sections))
 }
 
 function addSection(type:string,templateName:string):void{
@@ -119,11 +146,30 @@ function editSection(section:Section){
 
 onMounted(()=>{
     lastID = getLastId()
-    //loadSections()
+    loadLocalSections()
 
 })
 
 
+window.addEventListener('load',mouseInactivity,false);
+
+let currentTime =0;
+let limitTime = 5000;
+function mouseInactivity(){
+   document.body.addEventListener('mousemove',function(){
+      currentTime = new Date().getTime()
+   },false)
+   setInterval(activity,limitTime);
+   
+}
+
+function activity(){
+   if(Math.abs(currentTime - new Date().getTime()) > limitTime){
+      saveSections()
+   }
+}
+
+defineExpose({saveSections})
 
 </script>
 
@@ -147,13 +193,21 @@ onMounted(()=>{
             <component :is="section?.component" :elements="section?.elements"></component>
         </div>
 
+        
     </div>
+
+
+    
 </template>
 
 <style>
 
 .drop-zone {
     height: auto;
+    padding: 0 1rem;
+    overflow-y: scroll;
+    width: 92vw;
+    height: 100vh;
 }
 
 .section{

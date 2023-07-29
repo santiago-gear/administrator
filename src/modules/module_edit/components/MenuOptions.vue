@@ -3,11 +3,13 @@
 
 import {onUpdated,ref} from 'vue'
 import {useEditSectionStore } from '@/shared/stores/editSection.ts'
+import {saveImageDB} from '../../module_drag_drop/services/getSections.service'
 
 import ColorPicker from 'primevue/colorpicker'
 import TextArea from 'primevue/textarea'
 import FileUpload from 'primevue/fileupload'
-import Button from 'primevue/button'
+import Button from 'primevue/button' 
+
 
 const props = defineProps({
     element:{
@@ -15,6 +17,26 @@ const props = defineProps({
         required:false
     }
 })
+
+let image = ''
+
+function uploadImage(event){
+
+    const blob = event.files[0]
+    let reader = new FileReader()
+    
+    reader.readAsDataURL(blob)
+
+    reader.onload = function(){
+        image = reader.result
+    } 
+
+}
+
+function saveImage(){
+    props.element.source = image
+}
+
 
 
 </script>
@@ -40,8 +62,19 @@ const props = defineProps({
         </div>
     
     </div>
+
+
     <div v-else-if="props.element.type == 'image'">
-        <FileUpload name="demo[]" url="./upload.php" @upload="console.log('loaded')" :multiple="true" accept="image/*" :maxFileSize="1000000">
+        <FileUpload id="inputFiles" name="file[]" @select="uploadImage" customUpload="true" @upload="saveImage" :multiple="false" accept="image/*" fileLimit="1" :maxFileSize="1000000">
+            <template #header="{ chooseCallback, uploadCallback, clearCallback, files }">
+        <div class="flex flex-wrap justify-content-between align-items-center flex-1 gap-2">
+            <div class="flex gap-2">
+                <Button @click="chooseCallback()" icon="pi pi-images" rounded outlined></Button>
+                <Button @click="saveImage()" icon="pi pi-cloud-upload" rounded outlined severity="success" :disabled="!files || files.length === 0"></Button>
+                <Button @click="clearCallback()" icon="pi pi-times" rounded outlined severity="danger" :disabled="!files || files.length === 0"></Button>
+            </div>
+        </div>
+        </template>
             <template #empty>
                 <p>Drag and drop files to here to upload.</p>
             </template>
