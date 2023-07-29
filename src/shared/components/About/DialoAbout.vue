@@ -1,18 +1,32 @@
 <script setup lang="ts">
 
-    // Santi. Tu codigo debajo de esta linea
+import { ref } from 'vue';
+
+const props = defineProps({
+        elements:{
+            type:Object,
+            required:true,
+            default:{}
+        }
+    })
+
+const elements = ref(props.elements)
 
 </script>
 
 <template>
     <div id="about">
         <div class="item aboutme">
-            Acerca de nosotros
+            <p :style="[elements.title.styles, {color:'#'+elements.title.styles.color}]">{{elements.title.value}}</p>
         </div>
         <div class="item description">
-            OFRECEMOS <span class="s1">CALIDAD DE IDEAS.</span>
-            NUESTRO TRABAJO INICIA CON EL CONOCIMIENTO DEL MERCADO. 
-            NOS INVOLUCRAMOS PARA ENTENDER EL NEGOCIO DEL CLIENTE Y ESTAMOS CAPACITADOS PARA OFRECERLE <span class="s2">ESTRATEGIAS</span> DE CONTENIDO QUE LOGREN CONECTAR CON SU AUDIENCIA CLAVE.
+            <p>
+                <span :style="[elements.start.styles, {color:'#'+elements.start.styles.color}]">{{elements.start.value}}</span> 
+                <span :style="[elements.firstChange.styles, {color:'#'+elements.firstChange.styles.color}]" class="s1">{{ elements.firstChange.value }}</span>
+                <span :style="[elements.middle.styles, {color:'#'+elements.middle.styles.color}]">{{ elements.middle.value }}</span> 
+                <span :style="[elements.secondChange.styles, {color:'#'+elements.secondChange.styles.color}]" class="s2">{{elements.secondChange.value}}</span> 
+                <span :style="[elements.end.styles, {color:'#'+elements.end.styles.color}]">{{ elements.end.value }}</span>
+            </p>
         </div>
     </div>
 </template>

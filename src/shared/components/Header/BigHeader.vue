@@ -1,8 +1,8 @@
 <script setup>
 
 
-import {ref,onMounted} from 'vue'
-import { proof } from './../../interfaces/section.interface';
+import {ref} from 'vue'
+
  
 
 const props = defineProps({
@@ -15,9 +15,26 @@ const props = defineProps({
 
 const elements = ref(props.elements)
 
+
+
+
+
 </script>
 
 <template>    
-    <h1 :style="elements.tittle.styles">{{ elements.tittle.value }}</h1>
-    <p  :style="elements.p.styles">{{ elements.p.value }}</p>
+    <h1 :style="[
+            elements.title.styles,
+            { color:'#'+elements.title.styles.color }
+        ]"
+    >
+         {{ elements.title.value }}
+    </h1>
+
+    <p  :style="[
+            elements.p.styles,
+            { color:'#'+elements.p.styles.color }
+        ]">
+        {{ elements.p.value }}
+    </p>
+
 </template>

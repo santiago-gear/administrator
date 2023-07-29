@@ -7,19 +7,20 @@ export default [
         type:'Header',
         templateName:'BigHeader',
         elements:{
-            tittle: {
+            title: {
                 type:'text',
                 value:'Big Header',
                 styles: {
                     color:'#000000',
-                    fontSize:'30px'
+                    fontSize:'30px',
                 }
             },
             p: {
                 type:'text',
                 value:'Header 1',
                 styles:{
-                    color:'#000000'
+                    color:'#000000',
+                    fontSize:'45px',
                 }
             }
         }
@@ -29,7 +30,7 @@ export default [
         type:'Header',
         templateName:'SmallHeader',
         elements:{
-            tittle:{
+            title:{
                 type:'text',
                 value:'Small Header',
                 styles:{
@@ -43,56 +44,91 @@ export default [
                 styles:{
                     textAlign:'center'
                 }
+            },
+            image:{
+                type:'image',
+                source:'https://www.zooplus.es/magazine/wp-content/uploads/2020/01/Escuela-para-cachorros-768x512.jpeg',
+                alt:'kimetsu no yaiba img'
             }
         }
     },
     {
         id:2,
-        type:'NavBar',
-        templateName:'FixNavbar',
+        type:'Header',
+        templateName:'DialoHeader',
         elements:{
-            item1:{
+            title: {
                 type:'text',
-                value:'Home',
+                value:'DIALO B&M',
+                styles: {
+                    color:'#000000',
+                }
+            },
+            description: {
+                type:'text',
+                value:'Damos valor con soluciones simples, ágiles, flexibles y escalables, integrando calidad humana y tecnologia de avanzada',
                 styles:{
                     color:'#000000'
                 }
             },
-            item2:{
+            button:{
                 type:'text',
-                value:'Services',
+                value:'Agenda una consulta',
                 styles:{
-                    color:'#000000'
-                }
-            },
-            item3:{
-                type:'text',
-                value:'Contact Us',
-                styles:{
-                    color:'#ffddaa'
+                    width:'256px',
+                    height: '16px',
+                    borderRadius:'34px',
+                    border: '1px solid black',
+                    backgroundColor: '#eeeeee',
+                    color: '#000000',
+                    fontWeight: 'light',
+                    marginTop: '16px'
                 }
             }
         }
     },
     {
         id:3,
-        type:'Footer',
-        templateName:'DarkFooter',
+        type:'About',
+        templateName:'DialoAbout',
         elements:{
-            tittle: {
+            title: {
                 type:'text',
-                value:'Dark Footer',
+                value:'Acerca de nosotros',
                 styles: {
-                    color:'#000000',
-                    fontSize:'30px'
+                    color:'#000000'
                 }
             },
-            p: {
+            start: {
                 type:'text',
-                value:'Footer default',
+                value:'OFRECEMOS ',
                 styles:{
                     color:'#000000'
                 }
+            },
+            firstChange:{
+                type:'text',
+                value:'CALIDAD DE IDEAS. ',
+                styles:{
+                    color:'#72b60d'
+                }
+            },
+            middle:{
+                type:'text',
+                value:'NUESTRO TRABAJO INICIA CON EL CONOCIMIENTO DEL MERCADO. NOS INVOLUCRAMOS PARA ENTENDER EL NEGOCIO DEL CLIENTE Y ESTAMOS CAPACITADOS PARA OFRECERLE ',
+                styles:{
+                    color:'000000#'
+                }
+            },
+            secondChange:{
+                type:'text',
+                value:'ESTRATEGIAS ',
+                styles:{}
+            },
+            end:{
+                type:'text',
+                value:'DE CONTENIDO QUE LOGREN CONECTAR CON SU AUDIENCIA CLAVE.',
+                styles:{}
             }
         }
     },
@@ -129,7 +165,7 @@ export default [
         type:'Header',
         templateName:'BigHeader',
         elements:{
-            tittle: {
+            title: {
                 type:'text',
                 value:'Section 0',
                 styles: {
@@ -151,7 +187,7 @@ export default [
         type:'Header',
         templateName:'BigHeader',
         elements:{
-            tittle: {
+            title: {
                 type:'text',
                 value:'Section 0',
                 styles: {
@@ -173,7 +209,7 @@ export default [
         type:'Header',
         templateName:'DialoHeader',
         elements:{
-            tittle: {
+            title: {
                 type:'text',
                 value:'DIALO B&M',
                 styles: {

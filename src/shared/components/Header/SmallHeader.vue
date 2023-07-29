@@ -13,8 +13,22 @@ const elements = ref(props.elements)
 
 <template>
 
-    <h3 :style="elements.tittle.styles" >{{elements.tittle.value}}</h3>
+    <h3 :style="[
+            elements.title.styles,
+            { color: '#'+elements.title.styles.color }
+        ]"
+    >
+        {{elements.title.value}}
+    </h3>
 
-    <p  :style="elements.p.styles">{{elements.p.value}}</p>
+    <p  :style="[
+            elements.p.styles,
+            { color:'#'+elements.p.styles.color }
+        ]"
+    >
+        {{elements.p.value}}
+    </p>
+
+    <img :src="elements.image.source" :alt="elements.image.alt" >
 
 </template>

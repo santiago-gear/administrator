@@ -1,107 +1,117 @@
 <script setup lang="ts">
 
 
-import { ref, type Ref } from 'vue'
-import {type SubMenu} from '@/shared/interfaces/menu.interfaces'
+import { ref } from 'vue'
 
-const menu: SubMenu[] = [
-    {
-        type:'About',
-        options:['Dialo About']
-    },
-    /* {
-        type: 'Carousel',
-        options: ['Image Carousel']
-    }, */
-    {
-        type: 'Header',
-        options: ['Big Header', 'Small Header', 'Dialo Header']
-    },
-    {
-        type: 'Metrics',
-        options: ['Dialo Metrics']
-    },
-    {
-        type: 'Navbar',
-        options: ['Dialo Navbar']
-    }, 
-    {
-        type: 'Footer',
-        options: ['Dialo Footer']
-    },
-    {
-        type: 'Services',
-        options: ['Dialo Services']
-    },
-]
+import PanelMenu from 'primevue/panelmenu'
 
-const submenu: Ref<string[]>= ref([])
-const typeSelected: Ref<string> = ref('')
+const items = [
+    { 
+        label: 'About',
+        items: [
+            {
+            label:'Dialo About',  
+            }
+        ],
+        command:()=>{
+            typeSelected.value = 'About'
+        }
+    },
+    { 
+        label: 'Header',
+        items:[
+            {
+                label:'Big Header',
+            },
+            { 
+                label:'Small Header',
+            },
+            {
+                label:'Dialo Header',
+            } 
+        ],
+        command:()=>{
+            typeSelected.value = 'Header'
+        }
+    },
+    { 
+        label: 'Metrics',
+        items:[
+            {
+                label:'Dialo Metrics'
+            }
+        ],
+        command:()=>{
+            typeSelected.value = 'Metrics'
+        }
+    },
+    { 
+        label: 'Navbar',
+        items: [
+            {
+                label:'Dialo Navbar'
+            }
+        ],
+        command:()=>{
+            typeSelected.value = 'Navbar'
+        }
+    },
+    { 
+        label: 'Footer',
+        items:[
+            {
+                label:'Dialo Footer'
+            }
+        ],
+        command:()=>{
+            typeSelected.value = 'Footer'
+        }
+    },
+    { 
+        label: 'Services',
+        items: [
+            {
+                label:'Dialo Services'
+            }
+        ],
+        command:()=>{
+            typeSelected.value = 'Services'
+        }
+    },
+]; 
 
-const updateSubmenu = (el:SubMenu):void => {
-    typeSelected.value = el.type
-    submenu.value = el.options 
+const typeSelected = ref('')
 
-}
-
-const dragElement = (event :DragEvent,element:string) =>{
-    
+const dragElement = (event :DragEvent) =>{
     if(event.dataTransfer != undefined){
         event.dataTransfer.dropEffect= 'move'
         event.dataTransfer.effectAllowed= 'move'
         event.dataTransfer.setData('dragOption','insert')
         event.dataTransfer.setData('sectionType',typeSelected.value)
-        event.dataTransfer.setData('sectionTemplateName',element.split(' ').join(''))
+        const name = event.originalTarget.textContent
+        event.dataTransfer.setData('sectionTemplateName', name.split(' ').join(''))
     }
-} 
-
+}
 
 </script>
 
 <template>
-    <div class="container">
-        <div class="menu-container">
-            <div class="option" v-for="element in menu" @click="updateSubmenu(element)">
-                <p>{{ element.type }}</p>
-            </div>
-        </div>
-        <div class="menu-container">
-            
-            <div class="option" v-for="element in submenu" draggable="true" @dragstart="dragElement($event,element)" >
-                <p>{{ element }}</p>
-            </div>
-        </div>
-    </div>
+    
+    <PanelMenu :model="items" 
+        :pt="{
+            menuitem:{
+                draggable:true
+            }
+        }"
+        @dragstart="dragElement"
+    />
+   
 </template>
 
 
 <style scoped>
 
 
-.container{
-    max-width: 30rem;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-}
-
-.menu-container {
-    border-right: 1px solid black;
-    height: 100vh;
-    padding: 2rem;
-    max-width: 15rem;
-}
-
-.option {
-    padding: 1rem 2rem;
-    margin: 1rem 0;
-    border: 1px solid black;
-    transition: scale .3s;
-}
-
-.option:hover {
-    cursor: move;
-    scale: 1.2;
-}
 
 
 </style>

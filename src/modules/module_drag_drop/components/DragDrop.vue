@@ -1,18 +1,17 @@
 
 <script setup lang="ts">
 
-import { onMounted, defineAsyncComponent,ref, shallowReactive,computed, triggerRef} from 'vue';
+import { onMounted, defineAsyncComponent,ref, shallowReactive,} from 'vue';
 import { deleteSection, getDefault, getLastId, getSection, getSections } from '../services/getSections.service'
 import {type Section} from '@/shared/interfaces/section.interface'
 import {useEditSectionStore } from '@/shared/stores/editSection' 
-
+import SpeedDial from 'primevue/speeddial';
+import Button from 'primevue/button'
 
 const storeEdit = useEditSectionStore()
-
-/* const sections = computed(()=> storeEdit.sections) */
 const sections = shallowReactive([])
 const sectionsDivs= ref()
-const sectionsRefresh = computed(()=>storeEdit.refreshSections)
+const sectionsRefresh =ref(0)
 const positions = { old:null,new:null}
 
 let lastID = 0
@@ -22,24 +21,6 @@ function generateIDs():number{
     return lastID
 }
 
-/* function loadSections():void{
-    const savedSectionsIDs = getSections()
-    savedSectionsIDs.map( id =>{
-        const savedSection = getSection(id)
-        sections.value.push({
-            id,
-            type:savedSection.type,
-            templateName:savedSection.templateName,
-            elements:savedSection.elements,
-            component:defineAsyncComponent(() => import(`./${savedSection.templateName}.vue`))
-        })
-
-        
-    })
-
-    triggerRef(sections)
-    
-} */
 function loadSections():void{
     const savedSectionsIDs = getSections()
     savedSectionsIDs.map( id =>{
@@ -51,25 +32,9 @@ function loadSections():void{
             elements:savedSection.elements,
             component:defineAsyncComponent(() => import(`../../../shared/components/${savedSection.type}/${savedSection.templateName}.vue`))
         }
-        /* storeEdit.addSection(newSection) */
         sections.push(newSection)
-    })
-    
+    })   
 }
-
-
-/* function addSection(type:string,templateName:string):void{
-    const defaultSection = getDefault(templateName)
-    const url = `./${templateName}.vue`
-    const newSection:Section ={
-        id:generateIDs(),
-        type,
-        templateName,
-        elements:structuredClone(defaultSection.elements),
-        component: defineAsyncComponent(() => import(url))
-    } 
-    sections.value.push(newSection) 
-} */
 
 function addSection(type:string,templateName:string):void{
     const defaultSection = getDefault(templateName)
@@ -81,15 +46,15 @@ function addSection(type:string,templateName:string):void{
         elements:structuredClone(defaultSection.elements),
         component: defineAsyncComponent(() => import(/* @vite-ignore */url))
     } 
-    /* storeEdit.addSection(newSection)  */
     sections.push(newSection)
 }
 
-/* function removeSection(index:number,id:number){
+function removeSection(index:number,id:number){
 
-    storeEdit.removeSection(index)
-    deleteSection(id)
-} */
+    sections.splice(index,1);
+    sectionsRefresh.value++
+    //deleteSection(id)
+}
 
 function dropSection(event:DragEvent){
     const option = event.dataTransfer?.getData('dragOption')
@@ -108,7 +73,7 @@ function dropSection(event:DragEvent){
             sections.splice(positions.old,1)
             sections.splice(positions.new,0,aux)
         } 
-        storeEdit.updateSections()
+        sectionsRefresh.value++
     } 
 }
 
@@ -152,9 +117,6 @@ function editSection(section:Section){
 }
 
 
-
-
-
 onMounted(()=>{
     lastID = getLastId()
     //loadSections()
@@ -179,6 +141,9 @@ onMounted(()=>{
             @dblclick="editSection(section)"
             ref="sectionsDivs"
             >
+            <div class="delete">
+                <Button label="Delete" severity="danger" outlined size="small" @click="removeSection(index,section.id)" />
+            </div>
             <component :is="section?.component" :elements="section?.elements"></component>
         </div>
 
@@ -188,8 +153,19 @@ onMounted(()=>{
 <style>
 
 .drop-zone {
-    width: 100vw;
-    height: 100vh;
+    height: auto;
+}
+
+.section{
+    border: 1px dashed black;
+    position: relative;
+}
+
+.delete{
+    position: absolute;
+    display: inline-block;
+    top: 2px;
+    right: 10px;
 }
 
 </style>

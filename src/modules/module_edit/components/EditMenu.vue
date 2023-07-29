@@ -1,13 +1,27 @@
 <script setup>
 
 import {useEditSectionStore } from '@/shared/stores/editSection.ts' 
-import {computed,onUpdated, triggerRef} from 'vue' 
+import {computed} from 'vue' 
 import MenuOptions from './MenuOptions.vue'
-
+import Panel from 'primevue/panel'
+import TabPanel from 'primevue/tabpanel'
+import TabView from 'primevue/tabview'
 
 const storeEdit = useEditSectionStore()
 const section = computed(() =>storeEdit.section) 
 
+const dictionary = {
+    title:'Titulo',
+    description:'Descripcion',
+    image:'Imagen',
+    start:'Inicio',
+    middle:'Medio',
+    end:'Final',
+    firstChange:'Primer Cambio',
+    secondChange:'Segundo Cambio',
+    button:'Boton',
+    p:'Parrafo',
+}
 
 
 </script>
@@ -15,20 +29,35 @@ const section = computed(() =>storeEdit.section)
 
 <template>
 
-    <div>
-        <h1>Edit Menu</h1>
-        
-        <div class="field" v-for="(element,index) in section.elements" >
-        
-            <p><span class="field-name">{{index}}</span></p>
-            
-            <MenuOptions  :element="element"/>
-        </div>   
+    <div class="menu">
+        <Panel header="EDIT MENU">
+            <TabView :scrollable="true">
+                <TabPanel v-for="(element,index) in section.elements" :key="dictionary[index]" :header="dictionary[index]" >
+                    <MenuOptions  :element="element"/>
+                </TabPanel>   
+            </TabView>       
+        </Panel>
     </div>
 </template>
 
 
 <style scoped>
+
+
+.field{
+    margin-bottom: 1rem;
+    border-bottom: 1px solid black;
+    padding-bottom: 1rem;
+}
+
+.field:last-child{
+    border-bottom: none;
+    margin-bottom: 0;
+}
+
+.menu{
+    max-width: 40rem;
+}
 
 </style>
 

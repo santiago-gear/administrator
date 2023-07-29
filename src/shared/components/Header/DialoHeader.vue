@@ -1,11 +1,8 @@
 <script setup lang="ts">
     
 
-    // Santi. Tu codigo debajo de esta linea
-
-    import {ref,onMounted} from 'vue'
+    import {ref} from 'vue'
     import Button from 'primevue/button'
-    import { proof } from './../../interfaces/section.interface';
  
 
     const props = defineProps({
@@ -39,11 +36,17 @@
 
         <div id="main">
             <div id="company-name">
-                <h1 :style="elements.tittle.styles">{{ elements.tittle.value}}</h1>
+                <h1 :style="[
+                        elements.title.styles,
+                        { color: '#'+elements.title.styles.color}
+                    ]">{{ elements.title.value}}</h1>
             </div>
 
             <div style="width: 40%; font-size: 24px;">
-                <p :style="elements.description.styles">{{elements.description.value}}</p>
+                <p :style="[
+                        elements.description.styles,
+                        {color: '#'+elements.description.styles.color}
+                    ]">{{elements.description.value}}</p>
             </div>
             <Button :label="elements.button.value" :pt="{root:{style: elements.button.styles}}"/>
         </div>

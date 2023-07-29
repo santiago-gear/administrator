@@ -19,9 +19,13 @@ const getDefault = (name:string):DataBaseSection => {
             id=1;
             break;
         case 'DialoHeader':
-            id=7;
+            id=2;
+            break;
+        case 'DialoAbout':
+            id=3;
             break;
     }
+    console.log(id)
     return DB[id]
 }
 
