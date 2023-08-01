@@ -27,7 +27,6 @@ function generateIDs():number{
 
 function loadLocalSections():void{
     const localSections = localStorage.getItem('sections')
-    console.log(localSections)
     const savedSections = JSON.parse(localSections)
     console.log(savedSections)
     savedSections.map( savedSection => {

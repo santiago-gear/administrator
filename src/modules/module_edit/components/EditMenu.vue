@@ -11,16 +11,17 @@ const storeEdit = useEditSectionStore()
 const section = computed(() =>storeEdit.section) 
 
 const dictionary = {
-    title:'Titulo',
-    description:'Descripcion',
-    image:'Imagen',
-    start:'Inicio',
-    middle:'Medio',
-    end:'Final',
-    firstChange:'Primer Cambio',
-    secondChange:'Segundo Cambio',
+    background:'Fondo',
     button:'Boton',
+    description:'Descripcion',
+    end:'Final',
+    image:'Imagen',
+    firstChange:'Primer Cambio',
+    middle:'Medio',
     p:'Parrafo',
+    start:'Inicio',
+    secondChange:'Segundo Cambio',
+    title:'Titulo',
 }
 
 
@@ -59,6 +60,7 @@ const dictionary = {
 
 .menu{
     max-width: 40rem;
+    min-width: 40rem;
 }
 
 

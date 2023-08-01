@@ -22,19 +22,24 @@ const elements = ref(props.elements)
 </script>
 
 <template>    
-    <h1 :style="[
+    <!-- <h1 :style="[
             elements.title.styles,
             { color:'#'+elements.title.styles.color }
         ]"
     >
          {{ elements.title.value }}
-    </h1>
+    </h1>    -->
+    <div :style="elements.background.styles" >
+    
+    <span v-html="elements.title.value" :style="[
+            elements.title.styles,
+            { color:'#'+elements.title.styles.color }
+        ]"></span>
 
-    <p  :style="[
+    <span v-html="elements.p.value" :style="[
             elements.p.styles,
             { color:'#'+elements.p.styles.color }
         ]">
-        {{ elements.p.value }}
-    </p>
-
+    </span>
+    </div>
 </template>

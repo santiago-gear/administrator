@@ -18,7 +18,7 @@
 </script>
 
 <template>
-    <div id="start">
+    <div id="start" :style="elements.background.styles">
         <div id="social">
             <div>
                 <i class="pi pi-facebook" style="font-size: 1.5rem"></i>
@@ -36,17 +36,11 @@
 
         <div id="main">
             <div id="company-name">
-                <h1 :style="[
-                        elements.title.styles,
-                        { color: '#'+elements.title.styles.color}
-                    ]">{{ elements.title.value}}</h1>
+                <span v-html="elements.title.value"></span>
             </div>
 
             <div style="width: 40%; font-size: 24px;">
-                <p :style="[
-                        elements.description.styles,
-                        {color: '#'+elements.description.styles.color}
-                    ]">{{elements.description.value}}</p>
+                <span v-html="elements.p.value"></span>
             </div>
             <Button :label="elements.button.value" :pt="{root:{style: elements.button.styles}}"/>
         </div>

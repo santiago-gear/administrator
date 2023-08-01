@@ -1,6 +1,44 @@
 
 
 
+
+const blanco = {
+    id:0,
+    type:'Blank',
+    templateName:'Blank',
+    columnas:[
+        {
+            titulo: {
+            type:'text',
+            value:'<h1> Big <em>Header</em> </h1>',
+            styles: {
+                color:'#000000',
+                fontSize:'30px',
+                }
+            },
+            description:{
+                type:'text',
+                value:'<h1> Big Header </h1>',
+                styles: {
+                color:'#000000',
+                fontSize:'30px',
+                }
+            },
+            image:{
+                type:'image',
+                source:'https://www.zooplus.es/magazine/wp-content/uploads/2020/01/Escuela-para-cachorros-768x512.jpeg',
+                alt:'perritos jugando',
+                styles: {
+                }
+            }
+        }
+    ],
+    styles:{
+
+    }
+}
+
+
 export default [
     {
         id:0,
@@ -9,7 +47,7 @@ export default [
         elements:{
             title: {
                 type:'text',
-                value:'Big Header',
+                value:'<h1> Big Header </h1>',
                 styles: {
                     color:'#000000',
                     fontSize:'30px',
@@ -17,13 +55,20 @@ export default [
             },
             p: {
                 type:'text',
-                value:'Header 1',
+                value:'<h1>Header 1</h1>',
                 styles:{
                     color:'#000000',
                     fontSize:'45px',
                 }
+            },
+            background:{
+                type:'background',
+                styles: {
+                    backgroundColor: '#000000',
+                },
             }
-        }
+        },
+        
     },
     {
         id:1,
@@ -32,7 +77,7 @@ export default [
         elements:{
             title:{
                 type:'text',
-                value:'Small Header',
+                value:'<h1>Small Header</h1>',
                 styles:{
                     color:'#000000',
                     fontSize:'40px'
@@ -40,7 +85,7 @@ export default [
             },
             p:{
                 type:'text',
-                value:'small header parragraph',
+                value:'<p>small header parragraph</p>',
                 styles:{
                     textAlign:'center'
                 }
@@ -49,8 +94,15 @@ export default [
                 type:'image',
                 source:'https://www.zooplus.es/magazine/wp-content/uploads/2020/01/Escuela-para-cachorros-768x512.jpeg',
                 alt:'perritos jugando'
+            },
+            background:{
+                type:'background',
+                styles:{
+                    backgroundColor: '#FFFFFF',
+                }
             }
-        }
+        },
+        
     },
     {
         id:2,
@@ -85,7 +137,7 @@ export default [
                     marginTop: '16px'
                 }
             }
-        }
+        },
     },
     {
         id:3,
