@@ -22,6 +22,7 @@ function generateIDs():number{
 
 function loadLocalSections():void{
     const localSections = localStorage.getItem('sections')
+    if(!localSections) return
     const savedSections = JSON.parse(localSections)
     savedSections.map( savedSection => {
         const newSection = {
@@ -29,7 +30,7 @@ function loadLocalSections():void{
             type:savedSection.type,
             templateName:savedSection.templateName,
             elements:savedSection.elements,
-            component:defineAsyncComponent(() => import(`../../../shared/components/${savedSection.type}/${savedSection.templateName}.vue`))
+            component:defineAsyncComponent(() => import(`../../${savedSection.type}/${savedSection.templateName}.vue`))
         }
         lastID=savedSection.id
         sections.push(newSection)
@@ -60,7 +61,7 @@ function saveSections():void{
 function addSection(type:string,templateName:string):void{
     const defaultSection = getDefault(templateName)
     console.log(defaultSection)
-    const url = `../../../shared/components/${type}/${templateName}.vue`
+    const url = `../../${type}/${templateName}.vue`
     const newSection:Section ={
         id:generateIDs(),
         type,

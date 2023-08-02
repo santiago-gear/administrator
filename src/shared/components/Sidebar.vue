@@ -7,64 +7,36 @@ import PanelMenu from 'primevue/panelmenu'
 
 const items = [
     { 
-        label: 'About',
+        label: 'Accordion',
         items: [
             {
-            label:'Dialo About',  
+            label:'Accordion',  
             }
         ],
         command:()=>{
-            typeSelected.value = 'About'
+            typeSelected.value = 'Accordion'
         }
     },
     { 
-        label: 'Header',
+        label: 'Banner',
         items:[
             {
-                label:'Big Header',
-            },
-            { 
-                label:'Small Header',
-            },
-            {
-                label:'Dialo Header',
-            } 
+                label:'Banner',
+            }
         ],
         command:()=>{
-            typeSelected.value = 'Header'
+            typeSelected.value = 'Banner'
         }
     },
     { 
-        label: 'Info',
+        label: 'Blank',
         items:[
             {
-                label:'Dialo Information'
+                label:'Blank',
             }
         ],
         command:()=>{
-            typeSelected.value = 'Metrics'
-        }
-    },
-    { 
-        label: 'Navbar',
-        items: [
-            {
-                label:'Dialo Navbar'
-            }
-        ],
-        command:()=>{
-            typeSelected.value = 'Navbar'
-        }
-    },
-    { 
-        label: 'Footer',
-        items:[
-            {
-                label:'Dialo Footer'
-            }
-        ],
-        command:()=>{
-            typeSelected.value = 'Footer'
+            typeSelected.value = 'Blank'
         }
     },
     {
@@ -79,14 +51,28 @@ const items = [
         }
     },
     { 
-        label: 'Services',
-        items: [
+        label: 'Header',
+        items:[
             {
-                label:'Dialo Services'
+                label:'Big Header',
+            },
+            { 
+                label:'Small Header',
             }
         ],
         command:()=>{
-            typeSelected.value = 'Services'
+            typeSelected.value = 'Header'
+        }
+    },
+    { 
+        label: 'Slider',
+        items:[
+            {
+                label:'Testimonial Slider'
+            }
+        ],
+        command:()=>{
+            typeSelected.value = 'Slider'
         }
     },
 ]; 

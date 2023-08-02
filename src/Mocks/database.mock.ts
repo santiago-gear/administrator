@@ -102,7 +102,106 @@ export default {
         },
         
     },
-    DialoHeader:{
+    Gallery:{
+        id:2,
+        type:'Gallery',
+        templateName:'Gallery',
+        elements:{
+            array:{
+                type:'image-array',
+                content:[
+                    {
+                        type:'image',
+                        source:'https://www.egames.news/__export/1651693010218/sites/debate/img/2022/05/04/arena_of_valor_y_demon_slayer_kimetsu_no_yaiba_unen_fuerzas_en_su_mxs_reciente_colaboracixn.jpg_242310155.jpg',
+                        alt:'titulo 1'
+                    },
+                    {
+                        type:'image',
+                        source:'https://skdesu.com/wp-content/uploads/2021/05/kimetsu-no-yaiba.jpg',
+                        alt:'titulo 2'
+                    },
+                    {
+                        type:'image',
+                        source:'https://img.asmedia.epimg.net/resizer/m5z2sqyj2WiBff9zFBSmUpKbB8w=/1472x828/cloudfront-eu-central-1.images.arcpublishing.com/diarioas/LLW5WAZY2BITTN4HPDRWL7CIFY.jpg',
+                        alt:'titulo 3'
+                    },
+                    {
+                        type:'image',
+                        source:'https://www.zooplus.es/magazine/wp-content/uploads/2020/01/Escuela-para-cachorros-768x512.jpeg',
+                        alt:'perritos jugando'
+                    }
+                ],
+            },
+            background:{
+                type:'background',
+                styles: {
+                },
+            }
+        }
+    },
+    TestimonialSlider:{
+        id:2,
+        type:'Slider',
+        templateName:'TestimonialSlider',
+        elements:{
+            array:{
+                type:'text-array',
+                content:[
+                    {
+                      name: "daniel",
+                    },
+                    {
+                      name: "josue",
+                    },
+                    {
+                      name: "durán",
+                    },
+                ]
+            }
+        }
+    },
+    Accordion:{
+        id:3,
+        type:'Accordion',
+        templateName:'Accordion',
+        elements:{
+            array:{
+                type:'text-array',
+                content:[
+                    {
+                      id: 1,
+                      title: "indice 0",
+                      contenid: "Contenido 1",
+                    },
+                    {
+                      id: 2,
+                      title: "indice 1",
+                      contenid: "Contenido 2",
+                    },
+                    {
+                      id: 3,
+                      title: "indice 2",
+                      contenid: "Contenido 3",
+                    },
+                    {
+                      id: 4,
+                      title: "indice 3",
+                      contenid: "Contenido 4",
+                    },
+                    {
+                      id: 5,
+                      title: "indice 4",
+                      contenid: "Contenido 5",
+                    },
+                ]
+            }
+        }
+    }
+}
+
+/* 
+
+DialoHeader:{
         id:2,
         type:'Header',
         templateName:'DialoHeader',
@@ -134,6 +233,9 @@ export default {
                     fontWeight: 'light',
                     marginTop: '16px'
                 }
+            },
+            background:{
+                
             }
         },
     },
@@ -181,43 +283,4 @@ export default {
                 styles:{}
             }
         }
-    },
-    Gallery:{
-        id:4,
-        type:'Gallery',
-        templateName:'Gallery',
-        elements:{
-            array:{
-                type:'image-array',
-                content:[
-                    {
-                        type:'image',
-                        source:'https://www.egames.news/__export/1651693010218/sites/debate/img/2022/05/04/arena_of_valor_y_demon_slayer_kimetsu_no_yaiba_unen_fuerzas_en_su_mxs_reciente_colaboracixn.jpg_242310155.jpg',
-                        alt:'titulo 1'
-                    },
-                    {
-                        type:'image',
-                        source:'https://skdesu.com/wp-content/uploads/2021/05/kimetsu-no-yaiba.jpg',
-                        alt:'titulo 2'
-                    },
-                    {
-                        type:'image',
-                        source:'https://img.asmedia.epimg.net/resizer/m5z2sqyj2WiBff9zFBSmUpKbB8w=/1472x828/cloudfront-eu-central-1.images.arcpublishing.com/diarioas/LLW5WAZY2BITTN4HPDRWL7CIFY.jpg',
-                        alt:'titulo 3'
-                    },
-                    {
-                        type:'image',
-                        source:'https://www.zooplus.es/magazine/wp-content/uploads/2020/01/Escuela-para-cachorros-768x512.jpeg',
-                        alt:'perritos jugando'
-                    }
-                ],
-            },
-            background:{
-                type:'background',
-                styles: {
-                },
-            }
-        }
-    },
-}
-
+    },*/
