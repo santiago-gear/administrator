@@ -16,6 +16,7 @@ const dictionary = {
     description:'Descripcion',
     end:'Final',
     image:'Imagen',
+    array:'Contenido',
     firstChange:'Primer Cambio',
     middle:'Medio',
     p:'Parrafo',
@@ -34,13 +35,15 @@ const dictionary = {
 
     <div class="menu">
         <Panel header="EDIT MENU">
-            <TabView :scrollable="true">
+            <TabView :scrollable="true" >
                 <TabPanel v-for="(element,index) in section.elements" :key="dictionary[index]" :header="dictionary[index]" >
                     <MenuOptions  :element="element"/>
                 </TabPanel>   
             </TabView>       
         </Panel>
     </div>
+
+    
 </template>
 
 
@@ -61,6 +64,10 @@ const dictionary = {
 .menu{
     max-width: 40rem;
     min-width: 40rem;
+    max-height: 60%;
+    overflow-y: scroll;
+    z-index: 2;
+    border-radius: 5%;
 }
 
 

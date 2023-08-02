@@ -67,6 +67,17 @@ const items = [
             typeSelected.value = 'Footer'
         }
     },
+    {
+        label:'Gallery',
+        items:[
+            {
+                label:'Gallery'
+            }
+        ],
+        command:()=>{
+            typeSelected.value='Gallery'
+        }
+    },
     { 
         label: 'Services',
         items: [

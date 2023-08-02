@@ -2,21 +2,16 @@
 <script setup lang="ts">
 
 import { onMounted, defineAsyncComponent,ref, shallowReactive, computed, onUpdated,} from 'vue';
-import { deleteSection, getDefault, getLastId, getSection, getSections } from '../services/getSections.service'
+import {getDefault, getLastId } from '../services/getSections.service'
 import {type Section} from '@/shared/interfaces/section.interface'
 import {useEditSectionStore } from '@/shared/stores/editSection' 
 import Button from 'primevue/button'
-import { json } from 'stream/consumers';
 
 const storeEdit = useEditSectionStore()
 const sections = shallowReactive([])
 const sectionsDivs= ref()
 const sectionsRefresh =ref(0)
 const positions = { old:null,new:null}
-
-let  lastEditedSection= 0
-const currentEditedSection = ref(storeEdit.section.id)
-
 
 let lastID = 0
 
@@ -28,7 +23,6 @@ function generateIDs():number{
 function loadLocalSections():void{
     const localSections = localStorage.getItem('sections')
     const savedSections = JSON.parse(localSections)
-    console.log(savedSections)
     savedSections.map( savedSection => {
         const newSection = {
             id:savedSection.id,
@@ -37,6 +31,7 @@ function loadLocalSections():void{
             elements:savedSection.elements,
             component:defineAsyncComponent(() => import(`../../../shared/components/${savedSection.type}/${savedSection.templateName}.vue`))
         }
+        lastID=savedSection.id
         sections.push(newSection)
     })    
      
@@ -64,6 +59,7 @@ function saveSections():void{
 
 function addSection(type:string,templateName:string):void{
     const defaultSection = getDefault(templateName)
+    console.log(defaultSection)
     const url = `../../../shared/components/${type}/${templateName}.vue`
     const newSection:Section ={
         id:generateIDs(),
@@ -72,14 +68,13 @@ function addSection(type:string,templateName:string):void{
         elements:structuredClone(defaultSection.elements),
         component: defineAsyncComponent(() => import(/* @vite-ignore */url))
     } 
-    sections.push(newSection)
+    sections.push(newSection) 
 }
 
 function removeSection(index:number,id:number){
 
     sections.splice(index,1);
     sectionsRefresh.value++
-    //deleteSection(id)
 }
 
 function dropSection(event:DragEvent){
@@ -219,6 +214,7 @@ defineExpose({saveSections})
     display: inline-block;
     top: 2px;
     right: 10px;
+    z-index: 1;
 }
 
 </style>

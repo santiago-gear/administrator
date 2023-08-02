@@ -9,44 +9,17 @@ const getDB = ():Object =>{
 }
 
 const getDefault = (name:string):DataBaseSection => {
-
-    let id =0;
-    switch(name){
-        case 'BigHeader':
-            id=0;
-            break;
-        case 'SmallHeader':
-            id=1;
-            break;
-        case 'DialoHeader':
-            id=2;
-            break;
-        case 'DialoAbout':
-            id=3;
-            break;
-    }
-    return DB[id]
+    return DB[name]
 }
 
-/* const saveSection = (id:number,sectionObject:Section):void =>{
-    DB[id as keyof typeof DB]=sectionObject
-} */
-
-const getSections = ():number[] =>{
-    return [5,6]
-}
-const getSection = (id:number):DataBaseSection =>{
-    return DB[id]
+const getSection = (name:string):DataBaseSection =>{
+    return DB[name]
 }
 
 const getLastId =() =>{
-    return 6
+    return Object.keys(DB).length
 }
 
-const saveImageDB = (id,image) =>{
-    console.log(id)
-    DB[id].elements.image.source = image
-}
 
 const deleteSection = (id:number):void => {
     delete DB[id as keyof typeof DB]
@@ -57,8 +30,5 @@ export {
     getDefault,
     getDB,
     getLastId,
-    getSection, 
-    getSections,
-    saveImageDB,
-    /*saveSection, */
+    getSection,
 }

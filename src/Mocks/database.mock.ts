@@ -38,9 +38,8 @@ const blanco = {
     }
 }
 
-
-export default [
-    {
+export default {
+    BigHeader:{
         id:0,
         type:'Header',
         templateName:'BigHeader',
@@ -64,13 +63,12 @@ export default [
             background:{
                 type:'background',
                 styles: {
-                    backgroundColor: '#000000',
                 },
             }
         },
         
     },
-    {
+    SmallHeader:{
         id:1,
         type:'Header',
         templateName:'SmallHeader',
@@ -104,7 +102,7 @@ export default [
         },
         
     },
-    {
+    DialoHeader:{
         id:2,
         type:'Header',
         templateName:'DialoHeader',
@@ -124,7 +122,7 @@ export default [
                 }
             },
             button:{
-                type:'text',
+                type:'button',
                 value:'Agenda una consulta',
                 styles:{
                     width:'256px',
@@ -139,7 +137,7 @@ export default [
             }
         },
     },
-    {
+    DialoAbout:{
         id:3,
         type:'About',
         templateName:'DialoAbout',
@@ -184,112 +182,42 @@ export default [
             }
         }
     },
-    {
+    Gallery:{
         id:4,
-        type:'Carousel',
-        templateName:'ImageCarousel',
+        type:'Gallery',
+        templateName:'Gallery',
         elements:{
-            text1:{
-                type:'img',
-                value:'https://www.egames.news/__export/1651693010218/sites/debate/img/2022/05/04/arena_of_valor_y_demon_slayer_kimetsu_no_yaiba_unen_fuerzas_en_su_mxs_reciente_colaboracixn.jpg_242310155.jpg',
-                styles:{
-
-                }
+            array:{
+                type:'image-array',
+                content:[
+                    {
+                        type:'image',
+                        source:'https://www.egames.news/__export/1651693010218/sites/debate/img/2022/05/04/arena_of_valor_y_demon_slayer_kimetsu_no_yaiba_unen_fuerzas_en_su_mxs_reciente_colaboracixn.jpg_242310155.jpg',
+                        alt:'titulo 1'
+                    },
+                    {
+                        type:'image',
+                        source:'https://skdesu.com/wp-content/uploads/2021/05/kimetsu-no-yaiba.jpg',
+                        alt:'titulo 2'
+                    },
+                    {
+                        type:'image',
+                        source:'https://img.asmedia.epimg.net/resizer/m5z2sqyj2WiBff9zFBSmUpKbB8w=/1472x828/cloudfront-eu-central-1.images.arcpublishing.com/diarioas/LLW5WAZY2BITTN4HPDRWL7CIFY.jpg',
+                        alt:'titulo 3'
+                    },
+                    {
+                        type:'image',
+                        source:'https://www.zooplus.es/magazine/wp-content/uploads/2020/01/Escuela-para-cachorros-768x512.jpeg',
+                        alt:'perritos jugando'
+                    }
+                ],
             },
-            text2:{
-                type:'img',
-                value:'https://skdesu.com/wp-content/uploads/2021/05/kimetsu-no-yaiba.jpg',
-                styles:{
-
-                }
-            },
-            text3:{
-                type:'img',
-                value:'https://img.asmedia.epimg.net/resizer/m5z2sqyj2WiBff9zFBSmUpKbB8w=/1472x828/cloudfront-eu-central-1.images.arcpublishing.com/diarioas/LLW5WAZY2BITTN4HPDRWL7CIFY.jpg',
-                styles:{
-
-                }
+            background:{
+                type:'background',
+                styles: {
+                },
             }
         }
     },
-    {
-        id:5,
-        type:'Header',
-        templateName:'BigHeader',
-        elements:{
-            title: {
-                type:'text',
-                value:'Section 0',
-                styles: {
-                    color:'#c81e1e',
-                    fontSize:30
-                }
-            },
-            p: {
-                type:'text',
-                value:'modified',
-                styles:{
-                    color:'#2cb3ce'
-                }
-            }
-        }
-    },
-    {
-        id:6,
-        type:'Header',
-        templateName:'BigHeader',
-        elements:{
-            title: {
-                type:'text',
-                value:'Section 0',
-                styles: {
-                    color:'#c81e1e',
-                    fontSize:30
-                }
-            },
-            p: {
-                type:'text',
-                value:'modified',
-                styles:{
-                    color:'#2cb3ce'
-                }
-            }
-        }
-    },
-    {
-        id:7,
-        type:'Header',
-        templateName:'DialoHeader',
-        elements:{
-            title: {
-                type:'text',
-                value:'DIALO B&M',
-                styles: {
-                    color:'#000000',
-                }
-            },
-            description: {
-                type:'text',
-                value:'Damos valor con soluciones simples, ágiles, flexibles y escalables, integrando calidad humana y tecnologia de avanzada',
-                styles:{
-                    color:'#000000'
-                }
-            },
-            button:{
-                type:'text',
-                value:'Agenda una consulta',
-                styles:{
-                    width:'256px',
-                    height: '16px',
-                    borderRadius:'34px',
-                    border: '1px solid black',
-                    backgroundColor: '#eeeeee',
-                    color: '#000000',
-                    fontWeight: 'light',
-                    marginTop: '16px'
-                }
-            }
-        }
-    }
-]
+}
 
