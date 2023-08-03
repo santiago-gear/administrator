@@ -9,6 +9,7 @@ const getDB = ():Object =>{
 }
 
 const getDefault = (name:string):DataBaseSection => {
+    console.log(name)
     return DB[name]
 }
 

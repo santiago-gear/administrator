@@ -1,3 +1,4 @@
+import { advancedcard } from './../data/advancedcard';
 
 
 
@@ -107,7 +108,7 @@ export default {
         type:'Gallery',
         templateName:'Gallery',
         elements:{
-            array:{
+            images:{
                 type:'image-array',
                 content:[
                     {
@@ -165,39 +166,223 @@ export default {
         type:'Accordion',
         templateName:'Accordion',
         elements:{
-            array:{
-                type:'text-array',
-                content:[
+            array:[
                     {
-                      id: 1,
-                      title: "indice 0",
-                      contenid: "Contenido 1",
+                        title: {
+                            type:'text',
+                            text:'Titulo 1',
+                            styles:{}
+                        },
+                        p:{
+                            type:'text',  
+                            value:"<p>At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus.</p>",
+                            styles:{}
+                        },
+                        image:{
+                            type:'image',
+                            source:'',
+                            alt:'',
+                            styles:{}
+                        },
                     },
                     {
-                      id: 2,
-                      title: "indice 1",
-                      contenid: "Contenido 2",
+                        title: {
+                            type:'text',
+                            text:'Titulo 2',
+                            styles:{}
+                        },
+                        p:{
+                            type:'text',  
+                            value:'',
+                            styles:{}
+                        },
+                        image: {
+                            type:'image',
+                            source:"https://i.blogs.es/0ca9a6/aa/1366_2000.jpeg",
+                            alt:"Texto alternativo",
+                            styles:{}
+                        },
                     },
                     {
-                      id: 3,
-                      title: "indice 2",
-                      contenid: "Contenido 3",
+                        title: {
+                            type:'text',
+                            text:'Titulo 3',
+                            styles:{}
+                        },
+                        p:{
+                            type:'text',  
+                            value:"<p>At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus.</p>",
+                            styles:{}
+                        },
+                        image: {
+                            type:'image',
+                            source:"https://i.blogs.es/0ca9a6/aa/1366_2000.jpeg",
+                            alt:"Texto alternativo",
+                            styles:{}
+                        },  
                     },
-                    {
-                      id: 4,
-                      title: "indice 3",
-                      contenid: "Contenido 4",
+                  ]
+            
+        }
+    },
+    AdvancedCard:{
+        id:4,
+        type:'AdvancedCard',
+        templateName:'AdvancedCard',
+        elements:{
+            image:{
+                type:'image',
+                source:"https://i.blogs.es/0ca9a6/aa/1366_2000.jpeg",
+                alt:'Texto alt',
+            },
+            title:{
+                type:'text',
+                value:"Advanced <span style='color:red'>Card</span>"
+            },
+            subtitle:{
+                type:"text",
+                value:"Advanced <span style='color:red'>Card</span>"
+            },
+            description:{
+                type:'text',
+                value:"Lorem ipsum dolor sit amet, consectetur adipisicing elit. Inventore sed consequuntur error repudiandae numquam deserunt quisquam repellat libero asperiores earum nam nobis, culpa ratione quam perferendis esse, cupiditate neque quas!",
+            },
+            footer:{
+                type:'text',
+                value:"Footer"
+            },
+        }
+    },
+    Blank:{
+        id:5,
+        type:'Blank',
+        templateName:'Blank',
+        elements:{
+            array:[
+                {
+                    title: {
+                        type:'text',
+                        value:"<h1>Titulo</h1>"
                     },
-                    {
-                      id: 5,
-                      title: "indice 4",
-                      contenid: "Contenido 5",
+                    description:{
+                        type:'text',
+                        value:"<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque blandit ornare sapien ac feugiat. Nunc tempus magna tincidunt, porttitor diam eget, placerat velit. Ut velit neque, hendrerit nec elementum id, semper ac tellus. Vivamus non tellus non eros vestibulum blandit eu sed nunc. Nunc tempus magna tincidunt, porttitor diam eget, placerat velit. Ut velit neque, hendrerit nec elementum id, semper ac tellus. Vivamus non tellus non eros vestibulum blandit eu sed nunc. Nunc tempus magna tincidunt, porttitor diam eget, placerat velit. Ut velit neque, hendrerit nec elementum id, semper ac tellus. Vivamus non tellus non eros vestibulum blandit eu sed nunc. </p>",
                     },
-                ]
+                    image: {
+                        type:'image',
+                        source: "",
+                        alt: "Texto alternativo",
+                    },
+                    styles:{}
+                },
+                {
+                    title: {
+                        type:'text',
+                        value:"<h1>Titulo</h1>"
+                    },
+                    description:{
+                        type:'text',
+                        value:"<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque blandit ornare sapien ac feugiat. Nunc tempus magna tincidunt, porttitor diam eget, placerat velit. Ut velit neque, hendrerit nec elementum id, semper ac tellus. Vivamus non tellus non eros vestibulum blandit eu sed nunc. Nunc tempus magna tincidunt, porttitor diam eget, placerat velit. Ut velit neque, hendrerit nec elementum id, semper ac tellus. Vivamus non tellus non eros vestibulum blandit eu sed nunc. Nunc tempus magna tincidunt, porttitor diam eget, placerat velit. Ut velit neque, hendrerit nec elementum id, semper ac tellus. Vivamus non tellus non eros vestibulum blandit eu sed nunc. </p>",
+                    },
+                    styles:{}
+                },
+            ],
+            styles:{
+                backgroundColor:'#000000'
             }
+        }
+    },
+    Divider:{
+        id:3,
+        type:'Divider',
+        templateName:'Divider',
+        elements:{}
+    },
+    Fieldset:{
+        id:4,
+        type:'Fieldset',
+        templateName:'Fieldset',
+        elements:{
+            title: {
+                type:'text',
+                value:"Fieldset"
+            },
+            image: {
+                type:'image',
+                source:"https://i.blogs.es/0ca9a6/aa/1366_2000.jpeg",
+                alt:"Texto alternativo"
+            },
+            p:{
+                type:'text',
+                value:"Lorem ipsum dolor sit amet, consectetur adipisicing elit. Inventore sed consequuntur error repudiandae numquam deserunt quisquam repellat libero asperiores earum nam nobis, culpa ratione quam perferendis esse, cupiditate neque quas!"
+            },
+        }
+    },
+    Panel:{
+        id:5,
+        type:'Panel',
+        templateName:'Panel',
+        elements:{
+            title:{
+                type:'text',
+                value:"Header"
+            },
+            p:{
+                type:'text',
+                value:"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
+            }
+        }
+    },
+    SimpleCard:{
+        id:6,
+        type:'SimpleCard',
+        templateName:'SimpleCard',
+        elements:{
+            title:{
+                type:'text',
+                value:"Simple Card"
+            },
+            description:{
+                type:'text',
+                value:"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
+            }
+        }
+    },
+    TabView:{
+        id:7,
+        type:'TabView',
+        templateName:'TabView',
+        elements:{
+            array:[
+                    {
+                        title: 'Tab 1',
+                        image: {
+                            source: "https://i.blogs.es/0ca9a6/aa/1366_2000.jpeg",
+                            alt: ""
+                        }, 
+                        p: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla eget metus a mi dapibus placerat. Mauris id metus porta, vulputate nisi dignissim, tristique felis. Praesent posuere lacus sed quam accumsan elementum. Cras commodo tellus nec diam faucibus, imperdiet fringilla lacus tempor. Nulla volutpat tortor non felis malesuada sodales. Proin ac scelerisque justo. In pretium dolor vel placerat interdum. Proin bibendum nunc in sodales hendrerit. Suspendisse vestibulum ipsum quis orci dignissim commodo. Donec euismod laoreet nibh, eu placerat justo imperdiet sit amet. Nullam porta faucibus nisl sed blandit. In sed mollis ante. Nunc elit velit, varius et lectus at, feugiat vehicula tortor. Fusce dictum nisl suscipit leo consequat, a rutrum ligula consequat. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Integer tempus condimentum lacus. Donec iaculis, quam fringilla dignissim dictum, metus eros pharetra tellus, a faucibus odio turpis eu risus. Nunc pretium, justo nec ornare tincidunt, quam augue dictum odio, ac pharetra nunc mauris non lacus.'
+                    },
+                    {
+                        title: 'Tab 2', image: {
+                            source: "https://i.blogs.es/0ca9a6/aa/1366_2000.jpeg",
+                            alt: ""
+                        },
+                        p: 'Tab 2 Content'
+                    },
+                    {
+                        title: 'Tab 3', image: {
+                            source: "https://i.blogs.es/0ca9a6/aa/1366_2000.jpeg",
+                            alt: ""
+                        },
+                        p: '<p style="color:red">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla eget metus a mi dapibus placerat. Mauris id metus porta, vulputate nisi dignissim, tristique felis. Praesent posuere lacus sed quam accumsan elementum. Cras commodo tellus nec diam faucibus, imperdiet fringilla lacus tempor. Nulla volutpat tortor non felis malesuada sodales. Proin ac scelerisque justo. In pretium dolor vel placerat interdum. Proin bibendum nunc in sodales hendrerit. Suspendisse vestibulum ipsum quis orci dignissim commodo. Donec euismod laoreet nibh, eu placerat justo imperdiet sit amet. Nullam porta faucibus nisl sed blandit. In sed mollis ante. Nunc elit velit, varius et lectus at, feugiat vehicula tortor. Fusce dictum nisl suscipit leo consequat, a rutrum ligula consequat. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Integer tempus condimentum lacus. Donec iaculis, quam fringilla dignissim dictum, metus eros pharetra tellus, a faucibus odio turpis eu risus. Nunc pretium, justo nec ornare tincidunt, quam augue dictum odio, ac pharetra nunc mauris non lacus.</p>'
+                    }
+                ]
+            
         }
     }
 }
+
+
 
 /* 
 

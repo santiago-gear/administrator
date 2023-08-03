@@ -18,6 +18,17 @@ const items = [
         }
     },
     { 
+        label: 'Advanced Card',
+        items: [
+            {
+            label:'Advanced Card',  
+            }
+        ],
+        command:()=>{
+            typeSelected.value = 'AdvancedCard'
+        }
+    },
+    { 
         label: 'Banner',
         items:[
             {
@@ -37,6 +48,28 @@ const items = [
         ],
         command:()=>{
             typeSelected.value = 'Blank'
+        }
+    },
+    { 
+        label: 'Divider',
+        items: [
+            {
+            label:'Divider',  
+            }
+        ],
+        command:()=>{
+            typeSelected.value = 'Divider'
+        }
+    },
+    { 
+        label: 'Fieldset',
+        items: [
+            {
+            label:'Fieldset',  
+            }
+        ],
+        command:()=>{
+            typeSelected.value = 'Fieldset'
         }
     },
     {
@@ -65,14 +98,36 @@ const items = [
         }
     },
     { 
-        label: 'Slider',
-        items:[
+        label: 'Panel',
+        items: [
             {
-                label:'Testimonial Slider'
+            label:'Panel',  
             }
         ],
         command:()=>{
-            typeSelected.value = 'Slider'
+            typeSelected.value = 'Panel'
+        }
+    },
+    { 
+        label: 'Simple Card',
+        items: [
+            {
+            label:'Simple Card',  
+            }
+        ],
+        command:()=>{
+            typeSelected.value = 'SimpleCard'
+        }
+    },
+    { 
+        label: 'Tab View',
+        items:[
+            {
+                label:'Tab View'
+            }
+        ],
+        command:()=>{
+            typeSelected.value = 'TabView'
         }
     },
 ]; 

@@ -32,6 +32,10 @@ function setColor(){
     }
 }
 
+function onlyText(event){
+    props.text.text = event.textValue
+}
+
 
 </script>
 
@@ -45,7 +49,7 @@ function setColor(){
                 <Button size="small" icon="pi pi-align-right" aria-label="Filter" @click="props.text.styles.textAlign='right'"/>
             </div>
             <div class="options">
-                <Editor v-model="props.text.value" @selection-change="setSelection"  editorStyle="height: 10rem; text-align:left" >
+                <Editor v-model="props.text.value" @text-change="onlyText" @selection-change="setSelection"  editorStyle="height: 10rem; text-align:left" >
                 <template v-slot:toolbar>
                     <span class="ql-formats">
                         <select class="ql-header">

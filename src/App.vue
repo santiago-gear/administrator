@@ -48,7 +48,7 @@ function closeMenus(){
 }
 .editor{
    width: fit-content;
-   height: fit-content;
+   height: fit-content; 
    position: absolute;
    right: 50px;
    bottom:20px; 

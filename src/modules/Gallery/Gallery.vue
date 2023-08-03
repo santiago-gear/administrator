@@ -28,7 +28,7 @@ const elementsRef = reactive(props.elements)
 
 <template>
     <div class="container" :style="elementsRef.background.style">
-        <Galleria :value="elementsRef.array.content" :responsiveOptions="responsiveOptions" :numVisible="5"
+        <Galleria :value="elementsRef.images.content" :responsiveOptions="responsiveOptions" :numVisible="5"
             :containerStyle="{width:'100%'}">
             <template #item="slotProps">
                 <img :src="slotProps.item.source" :alt="slotProps.item.alt" style="width: 100%; display: block" width="400"
