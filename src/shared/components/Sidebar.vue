@@ -18,17 +18,6 @@ const items = [
         }
     },
     { 
-        label: 'Advanced Card',
-        items: [
-            {
-            label:'Advanced Card',  
-            }
-        ],
-        command:()=>{
-            typeSelected.value = 'AdvancedCard'
-        }
-    },
-    { 
         label: 'Blank',
         items:[
             {
@@ -86,7 +75,18 @@ const items = [
             typeSelected.value = 'TabView'
         }
     },
-]; 
+    {
+        label: 'Carousel',
+        items:[
+            {
+                label:'Carousel'
+            }
+        ],
+        command:()=>{
+            typeSelected.value = 'Carousel'
+        }
+    },
+];
 
 const typeSelected = ref('')
 
