@@ -6,7 +6,7 @@ import { onMounted, ref } from 'vue'
 import PanelMenu from 'primevue/panelmenu'
 
 const items = [
-    { 
+    {
         label: 'Accordion',
         items: [
             {
@@ -29,17 +29,6 @@ const items = [
         }
     },
     { 
-        label: 'Banner',
-        items:[
-            {
-                label:'Banner',
-            }
-        ],
-        command:()=>{
-            typeSelected.value = 'Banner'
-        }
-    },
-    { 
         label: 'Blank',
         items:[
             {
@@ -48,28 +37,6 @@ const items = [
         ],
         command:()=>{
             typeSelected.value = 'Blank'
-        }
-    },
-    { 
-        label: 'Divider',
-        items: [
-            {
-            label:'Divider',  
-            }
-        ],
-        command:()=>{
-            typeSelected.value = 'Divider'
-        }
-    },
-    { 
-        label: 'Fieldset',
-        items: [
-            {
-            label:'Fieldset',  
-            }
-        ],
-        command:()=>{
-            typeSelected.value = 'Fieldset'
         }
     },
     {
@@ -95,17 +62,6 @@ const items = [
         ],
         command:()=>{
             typeSelected.value = 'Header'
-        }
-    },
-    { 
-        label: 'Panel',
-        items: [
-            {
-            label:'Panel',  
-            }
-        ],
-        command:()=>{
-            typeSelected.value = 'Panel'
         }
     },
     { 

@@ -14,6 +14,9 @@ const cards = ref(props.elements);
       <div class="flex flex-row flex-wrap gap-3 justify-content-center align-content-center p-5">
         <template v-for="card in cards">
           <Card class="flex-1 card">
+            <template v-if="card.image" #header>
+              <img class="card-image" :src="card.image.source" :alt="card.image.alt" />
+            </template>
             <template #title>
               <div v-if="card.title" v-html="card.title.value"></div>
             </template>
@@ -29,6 +32,10 @@ const cards = ref(props.elements);
 <style>
 .card {
   min-width:200px;
+  max-width: 30%;
+}
+.card-image{
+  max-width:100%;
 }
 
 @media screen and (max-width: 480px) {

@@ -334,6 +334,10 @@ export default {
         templateName:'SimpleCard',
         elements:[
             {
+                image:{
+                  source:"https://4.bp.blogspot.com/-YxKJxL_qzvQ/XUZAOEHwiZI/AAAAAAAAmYs/lAnqYsvs_L0aJEkOVZc2KS2m-PuzNDOFQCLcBGAs/w1280-h720-p-k-no-nu/episodio-one-piece-sin-relleno.jpg",
+                  alt:"mi imagen"
+                },
                 title:{
                     value:"Prueba title"
                 },
@@ -341,7 +345,6 @@ export default {
                     value:"Prueba description"
                 }
             },
-
         ]
     },
     TabView:{
