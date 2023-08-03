@@ -1,8 +1,3 @@
-import { advancedcard } from './../data/advancedcard';
-
-
-
-
 const blanco = {
     id:0,
     type:'Blank',
@@ -337,16 +332,17 @@ export default {
         id:6,
         type:'SimpleCard',
         templateName:'SimpleCard',
-        elements:{
-            title:{
-                type:'text',
-                value:"Simple Card"
+        elements:[
+            {
+                title:{
+                    value:"Prueba title"
+                },
+                description:{
+                    value:"Prueba description"
+                }
             },
-            description:{
-                type:'text',
-                value:"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
-            }
-        }
+
+        ]
     },
     TabView:{
         id:7,
