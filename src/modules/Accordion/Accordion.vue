@@ -19,18 +19,18 @@ const props = defineProps({
     }
 })
 
-const tabs = ref(props.elements.array)
+const tabs = ref(props.elements )
 
 </script>
 
 <template>
         <Accordion :activeIndex="0">
             <AccordionTab v-for="tab in tabs" :key="tab.title" :header="tab.title.text">
-                <div class="tab-container" :style="tabs.styles">
-                    <div v-if="tab.image.source" class="image-container" :styles="tab.image.styles">
-                        <img :src="tab.image.source" :alt="tab.image.alt" width="100" height="100">
+                <div class="tab-container" :style="tab.background.styles">
+                    <div v-if="tab.image.source" >
+                        <img :src="tab.image.source" :alt="tab.image.alt">
                     </div>
-                    <div v-if="tab.p"  v-html="tab.p.value" :styles="tab.p.styles"></div>
+                    <div v-if="tab.p"  v-html="tab.p.value" :style="tab.p.styles"></div>
                 </div>
             </AccordionTab>
         </Accordion>
@@ -39,14 +39,18 @@ const tabs = ref(props.elements.array)
 <style scoped>
 
 .tab-container{
-    display: grid;
-    grid-template-columns: 1fr 1fr;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     gap: 1rem;
+    padding: 1rem;
 }
-
 img{
-    width: 100%;
+    width: 10   0%;
     height: auto;
+}
+:deep(.p-accordion-content){
+    padding: 0;
 }
 
 </style>

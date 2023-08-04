@@ -5,6 +5,7 @@ import Button from 'primevue/button';
 import Editor, { type EditorSelectionChangeEvent } from 'primevue/editor';
 import ColorPicker from 'primevue/colorpicker';
 import { ref } from 'vue';
+import { prototype } from 'events';
 
 const props = defineProps({
     text:{
@@ -34,6 +35,7 @@ function setColor(){
 
 function onlyText(event){
     props.text.text = event.textValue
+    /* props.text.value = event.htmlValue */
 }
 
 

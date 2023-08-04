@@ -54,6 +54,7 @@ export type Section = {
     id:number,
     type:string;
     templateName:string;
+    properties:Object;
     elements:SectionElements;
     styles?:SectionsStyles;
     component: Object;

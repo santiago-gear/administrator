@@ -2,15 +2,22 @@
   import Carousel from 'primevue/carousel';
   import {ref} from "vue";
   const props = defineProps({
+    properties: {},
     elements:{
       type:Object,
       required:true
     }
   });
 
-  const items = ref(props.elements.items);
-  const numVisible = ref(props.elements.numVisible);
-  const containerHeight = ref(props.elements.containerHeight);
+  const items = ref(props.elements);
+  const numVisible = ref(props.properties.options.numVisible);
+  const containerHeight = ref(props.properties.options.containerHeight);
+  const containerWidth = ref(props.properties.options.containerWidth);
+  const autoplay = ref(props.properties.options.autoplay);
+  const circular = ref(props.properties.options.circular);
+  const indicators = ref(props.properties.options.indicators);
+
+
   const responsiveOptions = ref([
     {
       breakpoint: '1199px',
@@ -19,8 +26,8 @@
     },
     {
       breakpoint: '991px',
-      numVisible: 2,
-      numScroll: 2
+      numVisible: numVisible < 1 ? 1: 2,
+      numScroll: numVisible < 1 ? 1: 2
     },
     {
       breakpoint: '767px',
@@ -28,9 +35,8 @@
       numScroll: 1
     }
   ]);
-  const circular = ref(props.elements.circular);
-  const autoplay = ref(props.elements.autoplay);
-  const indicators = ref(props.elements.indicators);
+
+
 </script>
 
 <template>
@@ -50,8 +56,9 @@
       <div class="carousel-container">
         <div class="carousel-image"
              :style="{
-                      height:`${containerHeight}px`,
-                      backgroundImage:`url(${slotProps.data.source})`,
+                      width:containerWidth,
+                      height:containerHeight,
+                      backgroundImage:`url(${slotProps.data.image.source})`,
                       backgroundSize:'cover',
                       backgroundRepeat:'no-repeat'}">
         </div>
@@ -63,7 +70,10 @@
 
 <style>
   .carousel-container{
-    margin: 5px
+    margin: 5px;
+    width: 100%;
+    display:flex;
+    justify-content: center;
   }
   .carousel-image{
     width: 100%;

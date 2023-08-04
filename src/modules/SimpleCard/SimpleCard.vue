@@ -2,11 +2,14 @@
 import Card from 'primevue/card';
 import { ref } from 'vue';
 const props = defineProps({
+    properties:{},
     elements:{
         type:Object,
         required:true,
     }
 });
+
+const properties = ref(props.properties)
 const cards = ref(props.elements);
 </script>
 
@@ -18,10 +21,10 @@ const cards = ref(props.elements);
               <img class="card-image" :src="card.image.source" :alt="card.image.alt" />
             </template>
             <template #title>
-              <div v-if="card.title" v-html="card.title.value"></div>
+              <div v-if="card.title" v-html="card.title.value" :style="card.title.styles"></div>
             </template>
             <template #content>
-              <div v-if="card.description" v-html="card.description.value">
+              <div v-if="card.description" v-html="card.description.value" :style="card.description.styles" >
               </div>
             </template>
           </Card>

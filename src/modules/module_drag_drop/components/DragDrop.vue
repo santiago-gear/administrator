@@ -29,6 +29,7 @@ function loadLocalSections():void{
             id:savedSection.id,
             type:savedSection.type,
             templateName:savedSection.templateName,
+            properties:savedSection.properties,
             elements:savedSection.elements,
             component:defineAsyncComponent(() => import(`../../${savedSection.type}/${savedSection.templateName}.vue`))
         }
@@ -66,6 +67,7 @@ function addSection(type:string,templateName:string):void{
         id:generateIDs(),
         type,
         templateName,
+        properties:structuredClone(defaultSection.properties),
         elements:structuredClone(defaultSection.elements),
         component: defineAsyncComponent(() => import(/* @vite-ignore */url))
     } 
@@ -185,7 +187,7 @@ defineExpose({saveSections})
             <div class="delete">
                 <Button label="Delete" severity="danger" outlined size="small" @click="removeSection(index,section.id)" />
             </div>
-            <component :is="section?.component" :elements="section?.elements"></component>
+            <component :is="section?.component" :elements="section?.elements" :properties="section?.properties"></component>
         </div>
 
         
