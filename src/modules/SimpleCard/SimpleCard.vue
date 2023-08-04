@@ -6,28 +6,36 @@ const props = defineProps({
         type:Object,
         required:true,
     }
-})
-
-const card = ref(props.elements)
+});
+const cards = ref(props.elements);
 </script>
 
 <template>
-    <div class="simple-card">
-        <Card>
+      <div class="flex flex-row flex-wrap gap-3 justify-content-center align-content-center p-5">
+        <template v-for="card in cards">
+          <Card class="flex-1 card">
+            <template v-if="card.image" #header>
+              <img class="card-image" :src="card.image.source" :alt="card.image.alt" />
+            </template>
             <template #title>
-                <div v-if="card.title" v-html="card.title.value"></div>
+              <div v-if="card.title" v-html="card.title.value"></div>
             </template>
             <template #content>
-                <div v-if="card.description" v-html="card.description.value">
-                </div>
+              <div v-if="card.description" v-html="card.description.value">
+              </div>
             </template>
-        </Card>
-    </div>
+          </Card>
+        </template>
+      </div>
 </template>
 
 <style>
-.simple-card {
-    padding: 0.2rem;
+.card {
+  min-width:200px;
+  max-width: 30%;
+}
+.card-image{
+  max-width:100%;
 }
 
 @media screen and (max-width: 480px) {

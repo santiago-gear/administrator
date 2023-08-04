@@ -6,7 +6,7 @@ import { onMounted, ref } from 'vue'
 import PanelMenu from 'primevue/panelmenu'
 
 const items = [
-    { 
+    {
         label: 'Accordion',
         items: [
             {
@@ -18,28 +18,6 @@ const items = [
         }
     },
     { 
-        label: 'Advanced Card',
-        items: [
-            {
-            label:'Advanced Card',  
-            }
-        ],
-        command:()=>{
-            typeSelected.value = 'AdvancedCard'
-        }
-    },
-    { 
-        label: 'Banner',
-        items:[
-            {
-                label:'Banner',
-            }
-        ],
-        command:()=>{
-            typeSelected.value = 'Banner'
-        }
-    },
-    { 
         label: 'Blank',
         items:[
             {
@@ -48,28 +26,6 @@ const items = [
         ],
         command:()=>{
             typeSelected.value = 'Blank'
-        }
-    },
-    { 
-        label: 'Divider',
-        items: [
-            {
-            label:'Divider',  
-            }
-        ],
-        command:()=>{
-            typeSelected.value = 'Divider'
-        }
-    },
-    { 
-        label: 'Fieldset',
-        items: [
-            {
-            label:'Fieldset',  
-            }
-        ],
-        command:()=>{
-            typeSelected.value = 'Fieldset'
         }
     },
     {
@@ -98,17 +54,6 @@ const items = [
         }
     },
     { 
-        label: 'Panel',
-        items: [
-            {
-            label:'Panel',  
-            }
-        ],
-        command:()=>{
-            typeSelected.value = 'Panel'
-        }
-    },
-    { 
         label: 'Simple Card',
         items: [
             {
@@ -130,7 +75,18 @@ const items = [
             typeSelected.value = 'TabView'
         }
     },
-]; 
+    {
+        label: 'Carousel',
+        items:[
+            {
+                label:'Carousel'
+            }
+        ],
+        command:()=>{
+            typeSelected.value = 'Carousel'
+        }
+    },
+];
 
 const typeSelected = ref('')
 
