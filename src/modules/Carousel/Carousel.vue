@@ -1,6 +1,6 @@
 <script setup lang="ts">
   import Carousel from 'primevue/carousel';
-  import {ref} from "vue";
+  import {onBeforeUpdate, onUpdated, reactive, ref} from "vue";
   const props = defineProps({
     properties: {},
     elements:{
@@ -10,24 +10,22 @@
   });
 
   const items = ref(props.elements);
-  const numVisible = ref(props.properties.options.numVisible);
-  const containerHeight = ref(props.properties.options.containerHeight);
-  const containerWidth = ref(props.properties.options.containerWidth);
-  const autoplay = ref(props.properties.options.autoplay);
-  const circular = ref(props.properties.options.circular);
-  const indicators = ref(props.properties.options.indicators);
+  const sectionOptions = ref(props.properties.options)
+  const showCarousel = ref(0)
+
+
 
 
   const responsiveOptions = ref([
     {
       breakpoint: '1199px',
-      numVisible,
-      numScroll: numVisible
+      numVisible: ref(props.properties.options.numVisible),
+      numScroll: ref(props.properties.options.numVisible)
     },
     {
       breakpoint: '991px',
-      numVisible: numVisible < 1 ? 1: 2,
-      numScroll: numVisible < 1 ? 1: 2
+      numVisible: 2,
+      numScroll: 2,
     },
     {
       breakpoint: '767px',
@@ -40,14 +38,14 @@
 </script>
 
 <template>
-  <Carousel
+  <Carousel :key="sectionOptions.numVisible"
       :value="items"
-      :numVisible="numVisible"
-      :numScroll="numVisible"
+      :numVisible="sectionOptions.numVisible"
+      :numScroll="sectionOptions.numVisible"
       :responsiveOptions="responsiveOptions"
-      :circular="circular"
-      :autoplayInterval="(autoplay)?3000:0"
-      :showIndicators="indicators"
+      :circular="sectionOptions.circular"
+      :autoplayInterval="(sectionOptions.autoplay)?3000:0"
+      :showIndicators="sectionOptions.indicators"
       :pt="{
                 indicatorButton: { class: 'border-circle', style: { width: '20px', height: '20px' } }
             }"
@@ -56,19 +54,19 @@
       <div class="carousel-container">
         <div class="carousel-image"
              :style="{
-                      width:containerWidth,
-                      height:containerHeight,
+                      width:props.properties.options.width,
+                      height:props.properties.options.height,
                       backgroundImage:`url(${slotProps.data.image.source})`,
                       backgroundSize:'cover',
                       backgroundRepeat:'no-repeat'}">
         </div>
-      </div>
-<!--      <img class="carousel-image" :src="slotProps.data.source" :alt="slotProps.data.alt">-->
+      </div>  
     </template>
   </Carousel>
 </template>
 
 <style>
+
   .carousel-container{
     margin: 5px;
     width: 100%;

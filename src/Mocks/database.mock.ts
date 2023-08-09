@@ -307,8 +307,8 @@ export default {
             options:{
                 type:'options',
                 numVisible: 3,
-                containerWidth: '400px',
-                containerHeight: '400px',
+                width: '400px',
+                height: '400px',
                 circular: true,
                 autoplay: 3000,
                 indicators: true

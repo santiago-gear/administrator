@@ -34,17 +34,6 @@ const items = [
                 }
             },
             {
-                label: 'Gallery',
-                items: [
-                    {
-                        label: 'Gallery'
-                    }
-                ],
-                command: () => {
-                    typeSelected.value = 'Gallery'
-                }
-            },
-            {
                 label: 'Header',
                 items: [
                     {
@@ -70,17 +59,6 @@ const items = [
                 }
             },
             {
-                label: 'Tab View',
-                items: [
-                    {
-                        label: 'Tab View'
-                    }
-                ],
-                command: () => {
-                    typeSelected.value = 'TabView'
-                }
-            },
-            {
                 label: 'Carousel',
                 items: [
                     {
@@ -92,15 +70,17 @@ const items = [
                 }
             },
         ],
+        to:'/'
     },
     {
-        label: 'Extras',
+        label: 'Configuracion',
         icon:'pi pi-bell',
         items: [
             {
                 label: 'Agregar Fuente',
             }
-        ]
+        ],
+        to:'/configure'
     }
 ];
 
